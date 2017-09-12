@@ -21,7 +21,6 @@ export class ChatComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private usersService: UsersService,
-        private messagesService: MessagesService,
         private chatService: ChatService
     ) { }
 
@@ -35,7 +34,8 @@ export class ChatComponent implements OnInit {
         message.text = this.messageText;
         message.user = this.me;
         message.date = Date.now();
-        this.messagesService.sendMessage(message);
+        this.chatService.sendMessage(message);
+        this.messageText = '';
     }
 
     closeChat() {
