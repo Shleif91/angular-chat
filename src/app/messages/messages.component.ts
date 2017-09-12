@@ -20,4 +20,7 @@ export class MessagesComponent implements OnInit {
         this.messages = this.messageService.getMessages();
     }
 
+    getColor(message: Message, me) {
+        return message.user.id === me.id ? 'green' : 'blue';
+    }
 }

@@ -21,7 +21,6 @@ export class ChatService {
 
         this.socket.onmessage = function (ev) {
             self.messagesService.sendMessage(JSON.parse(ev.data));
-            console.log(ev.data);
             $('.chat-log').scrollTop(0);
         };
 
