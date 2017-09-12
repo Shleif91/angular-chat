@@ -4,6 +4,9 @@ import { UsersService } from '../users/users.service';
 import { User } from '../user/user';
 import { Message } from '../message/message';
 import { MessagesService } from '../messages/messages.service';
+import {ChatService} from "./chat.service";
+
+declare var $:any;
 
 @Component({
     selector: 'app-chat',
@@ -18,7 +21,8 @@ export class ChatComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private usersService: UsersService,
-        private messagesService: MessagesService
+        private messagesService: MessagesService,
+        private chatService: ChatService
     ) { }
 
     ngOnInit() {
@@ -27,10 +31,14 @@ export class ChatComponent implements OnInit {
     }
 
     sendMessage() {
-        let message = new Message();
+        const message = new Message();
         message.text = this.messageText;
         message.user = this.me;
         message.date = Date.now();
         this.messagesService.sendMessage(message);
+    }
+
+    closeChat() {
+        this.chatService.closeChat();
     }
 }

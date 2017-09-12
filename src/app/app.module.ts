@@ -12,6 +12,7 @@ import { UsersService } from './users/users.service';
 import { MessageComponent } from './message/message.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './messages/messages.service';
+import { ChatService } from './chat/chat.service';
 
 const appRoutes: Routes = [
     { path: '', component: UsersComponent },
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     ],
     providers: [
         UsersService,
-        MessagesService
+        MessagesService,
+        ChatService
     ],
     bootstrap: [AppComponent]
 })
